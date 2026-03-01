@@ -7,3 +7,7 @@ def home(request):
 
 def show_task(request):
     return HttpResponse("<h1>This is our task page</h1>")
+
+
+def specific_task(request, id):
+    return HttpResponse("<h1>This is our spacefic task</h1>")
