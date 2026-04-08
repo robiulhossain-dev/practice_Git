@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold">
+      Hello world!
+    </h1>
+    <p class="lal-bg">Hi</p>
+    <img src="{% static 'image/img.jpg' %}" alt="">
+    {% for name in names %}
+      <p>{{name}}</p>
+    {% endfor %}
+    
+    
+  </body>
+</html>
