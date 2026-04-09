@@ -10,9 +10,14 @@
   </head>
   <body>
     <div>
-        {% for task in tasks %}
-            <li>{{task.title}}</li>
-        {% endfor %}
+        {% comment %} {% for task in tasks %}
+            <li>{{task.task.title}}</li>
+            <span>{{task.priority}}</span>
+        {% endfor %} {% endcomment %}
+         {% for task in tasks %}
+            <li>{{task.task.title}}</li>
+            <li>{{task.assigned_to}}</li>
+         {% endfor %}
     </div>
   </body>
 </html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from tasks.forms import TaskForm, TaskModelForm
-from tasks.models import Employee,Task
+from tasks.models import Employee,Task, TaskDetail
 # Create your views here.
 
 def home(request):
@@ -58,5 +58,7 @@ def create_task(request):
 
 
 def view_task(request):
-    tasks = Task.objects.all()
+    # tasks = TaskDetail.objects.all()
+    # tasks = Task.objects.select_related("details").all()
+    tasks = TaskDetail.objects.select_related("task").all()
     return render(request, "show_task.html", {"tasks" : tasks})
