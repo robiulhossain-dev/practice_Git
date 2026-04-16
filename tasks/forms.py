@@ -1,5 +1,5 @@
 from django import forms
-from tasks.models import Task
+from tasks.models import Task, TaskDetail
 class TaskForm(forms.Form):
     title = forms.CharField(max_length=250, label="Task Title")
     description = forms.CharField(widget=forms.Textarea, label="Task Description")
@@ -67,6 +67,11 @@ class StyledForMixin():
                 field.widget.attrs.update({
                     'class' : "space-y-2"
                 })
+            elif isinstance(field.widget, forms.Select):
+                field.widget.attrs.update({
+                    'class': self.default_classes.replace('w-full', 'w-48')
+                    # 'style': 'resize: none;',
+                })
             
 
 
@@ -106,3 +111,16 @@ class TaskModelForm(StyledForMixin, forms.ModelForm):
         self.apply_styled_widget()
 
         
+class TaskDetailModelForm(StyledForMixin, forms.ModelForm):
+    
+    class Meta:
+        model = TaskDetail
+        fields = ['priority', 'notes']
+
+        widgets = {
+            'priority' : forms.Select(),
+            # 'assigned_to' : forms.CheckboxSelectMultiple
+        }
+    def __init__(self, *args, **kwarg):
+        super().__init__(*args, **kwarg)
+        self.apply_styled_widget()

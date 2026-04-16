@@ -11,15 +11,19 @@
   <body>
     <div class="w-1/2 mx-auto mt-8">
       <div>
-        {% if message %}
-          <p>{{message}}</p>
+        {% if messages %}
+          {% for message in messages %}
+            <div class=" {% if message.tags == 'success' %}{% endif %}">
+              {{message}}</div>
+          {% endfor %}
         {% endif %}
       </div>
       <form method="POST">
         {% comment %} <input type="text" class="border-2  border-gray-300 w-full rounded-lg shadow-sm
         focus:border-rose-500 focus:ring-rose-500" placeholder="enter task title"> {% endcomment %}
         {% csrf_token %}
-        {{forms.as_p}}
+        {{task_form.as_p}}
+        {{taskdetail_form.as_p}}
 		    <button type="submit" class="bg-rose-600 px-3 py-2 text-white mt-2 rounded-md">Submit</button>
 	    </form>
     </div>

@@ -14,10 +14,14 @@
             <li>{{task.task.title}}</li>
             <span>{{task.priority}}</span>
         {% endfor %} {% endcomment %}
-         {% for task in tasks %}
-            <li>{{task.task.title}}</li>
-            <li>{{task.assigned_to}}</li>
-         {% endfor %}
+         {% comment %} {% for task in tasks %}
+            <li>
+                <p>{{task.title}}</p>
+                <span>{{task.status}}</span>
+            </li>
+         {% endfor %} {% endcomment %}
+
+         {{task_count.num_task}}
     </div>
   </body>
 </html>

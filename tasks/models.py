@@ -13,8 +13,8 @@ class Task(models.Model):
         ('PENDING', 'Pending'),        
         ('IN_PROGRESS', 'In Progress'),
         ('COMPLETED', 'Completed'),
-
     )
+    
     project = models.ForeignKey(
         "Project", 
         on_delete=models.CASCADE,
@@ -49,7 +49,7 @@ class TaskDetail(models.Model):
         on_delete=models.CASCADE,
         related_name='details'
     )
-    assigned_to = models.CharField(max_length=100)
+    # assigned_to = models.CharField(max_length=100)
     priority = models.CharField(
         max_length=1, choices=PRIORITY_OPTIONS, default=LOW)
 
